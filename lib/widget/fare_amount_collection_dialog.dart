@@ -26,7 +26,7 @@ class _FareAmountCollectionDialogState
           padding: EdgeInsets.all(6),
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color(0xFFFF1717),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -82,14 +82,14 @@ class _FareAmountCollectionDialogState
                       "Collect Cash: ",
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.blue,
+                        color: Color(0xFFFF1717),
                       ),
                     ),
                     Text(
                       "\u20A6" + widget.totalFareAmount.toString(),
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.blue,
+                        color: Color(0xFFFF1717),
                         fontWeight: FontWeight.bold,
                       ),
                     )

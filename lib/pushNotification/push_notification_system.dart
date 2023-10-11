@@ -145,7 +145,6 @@ class PushNotificationSystem {
 
               userRideRequestDetails.rideRequestId = rideRequestId;
 
-              print("hello");
               if (event.snapshot.value == 'waiting') {
                 showDialog(
                     context: context,
@@ -178,7 +177,6 @@ class PushNotificationSystem {
 
         ref.set("idle");
         Fluttertoast.showToast(msg: "This Ride Request has been cancelled");
-
         Navigator.pop(context);
       }
     });

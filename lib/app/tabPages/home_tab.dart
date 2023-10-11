@@ -67,51 +67,11 @@ class _HomeTabPageState extends State<HomeTabPage> with WidgetsBindingObserver {
     AssistantMethods.readDriverRatings(context);
   }
 
-  readCurrentDriverInformation() async {
-    // currentUser = firebaseAuth.currentUser;
-    // print(currentUser);
-    // FirebaseDatabase.instance
-    //     .ref()
-    //     .child('drivers')
-    //     .child(currentUser!.uid)
-    //     .once()
-    //     .then((snap) {
-    //   // Check if there is a matching document
-    //   if (snap.snapshot.value != null) {
-    //     onlineDriverData.id = (snap.snapshot.value as Map)['id'];
-    //     onlineDriverData.name = (snap.snapshot.value as Map)['name'];
-    //     onlineDriverData.phone = (snap.snapshot.value as Map)["phone"];
-    //     onlineDriverData.email = (snap.snapshot.value as Map)["email"];
-    //     onlineDriverData.address = (snap.snapshot.value as Map)["address"];
-    //     onlineDriverData.ratings = (snap.snapshot.value as Map)["ratings"];
-
-    //     onlineDriverData.v_color =
-    //         (snap.snapshot.value as Map)["information"]["v_colour"];
-    //     onlineDriverData.v_number =
-    //         (snap.snapshot.value as Map)["information"]["v_number"];
-    //     onlineDriverData.v_model =
-    //         (snap.snapshot.value as Map)["information"]["v_model"];
-    //     onlineDriverData.car_type =
-    //         (snap.snapshot.value as Map)["information"]["offers"];
-    //     driverVehicleType =
-    //         (snap.snapshot.value as Map)["information"]["offers"];
-
-    //     print(onlineDriverData);
-    //     print(onlineDriverData.car_type);
-    //   }
-    // });
-    // AssistantMethods.driverInformation()
-
-    // AssistantMethods.readDriverEarnings(context);
-    // AssistantMethods.readDriverRatings(context);
-  }
-
   @override
   void initState() {
     super.initState();
 
     checkIfLocationPermissionAllowed();
-    // readCurrentDriverInformation();
     AssistantMethods.driverInformation(context);
     PushNotificationSystem pushNotificationSystem = PushNotificationSystem();
     pushNotificationSystem.initialzeCloudMessaging(context);
@@ -128,12 +88,12 @@ class _HomeTabPageState extends State<HomeTabPage> with WidgetsBindingObserver {
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused) {
-      // Run your function here when the app goes into the background or is closed.
-      driverIsOfflineNow();
-    }
-  }
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (state == AppLifecycleState.inactive) {
+  //     // Run your function here when the app goes into the background or is closed.
+  //     driverIsOfflineNow();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

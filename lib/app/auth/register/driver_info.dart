@@ -10,6 +10,8 @@ import '../../../services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class DriverInformation extends StatefulWidget {
+  File profile_pic;
+  DriverInformation({required this.profile_pic});
   @override
   _DriverInformationState createState() => _DriverInformationState();
 }
@@ -17,7 +19,6 @@ class DriverInformation extends StatefulWidget {
 class _DriverInformationState extends State<DriverInformation> {
   final _formkey = GlobalKey<FormState>();
   bool loading = false;
-
   final TextEditingController v_model = TextEditingController();
   final TextEditingController v_number = TextEditingController();
   final TextEditingController v_colour = TextEditingController();
@@ -78,9 +79,12 @@ class _DriverInformationState extends State<DriverInformation> {
       setState(() {
         loading = true;
       });
-      if (_formkey.currentState!.validate() && selectedFile != null) {
+      if (_formkey.currentState!.validate() &&
+          selectedFile != null &&
+          widget.profile_pic != null) {
         // Upload the file and wait for the downloadURL to be available.
         String downloadURL = await uploadFile(selectedFile);
+        String profileURL = await uploadFile(widget.profile_pic);
 
         Map<String, dynamic> addInformation = {
           "v_model": v_model.text.trim(),
@@ -89,6 +93,7 @@ class _DriverInformationState extends State<DriverInformation> {
           "means_of_identity": means_of_identity.text.trim(),
           // "offers": ride,
           "documents": downloadURL,
+          "profile_url": profileURL
         };
 
         bool? addingInfo = await Auth().addDriverInformation(addInformation);
@@ -119,9 +124,6 @@ class _DriverInformationState extends State<DriverInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('Driver Information'),
-        // ),
         body: Center(
       child: SingleChildScrollView(
         child: Form(
@@ -138,46 +140,12 @@ class _DriverInformationState extends State<DriverInformation> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             SizedBox(height: 26),
-
-                            // Image.asset(
-                            //   "images/logo.png",
-                            //   width: 50,
-                            // ),
                             Text(
                               "Rider Information",
                               style: TextStyle(
                                   fontSize: 30, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(height: 26),
-                            // DropdownButtonFormField(
-                            //     decoration: InputDecoration(
-                            //       labelText: 'Ride Offers',
-                            //       // prefixIcon: Icon(Icons.taxi_alert),
-                            //       border: OutlineInputBorder(),
-                            //     ),
-                            //     items: [
-                            //       DropdownMenuItem(
-                            //           child: Row(
-                            //             children: [
-                            //               Icon(Icons.local_taxi),
-                            //               Text("Taxi Rider")
-                            //             ],
-                            //           ),
-                            //           value: "Taxi"),
-                            //       DropdownMenuItem(
-                            //           child: Row(children: [
-                            //             Icon(Icons.motorcycle),
-                            //             Text("Dispatch Rider")
-                            //           ]),
-                            //           value: "Bike")
-                            //     ],
-                            //     onChanged: (String? value) {
-                            //       setState(
-                            //         () {
-                            //           ride = value;
-                            //         },
-                            //       );
-                            //     }),
                             SizedBox(height: 16.0),
                             TextFormField(
                               decoration: InputDecoration(
@@ -242,7 +210,7 @@ class _DriverInformationState extends State<DriverInformation> {
                                   AutovalidateMode.onUserInteraction,
                               validator: (text) {
                                 if (text == null || text.isEmpty) {
-                                  return 'Ride Model can\'t be empty';
+                                  return 'Means of Identity can\'t be empty';
                                 }
                               },
                               onChanged: (text) => setState(() {

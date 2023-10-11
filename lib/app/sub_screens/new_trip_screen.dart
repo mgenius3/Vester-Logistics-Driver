@@ -259,7 +259,8 @@ class _NewTripScreenState extends State<NewTripScreen> {
     if (iconAnimatedMarker == null) {
       ImageConfiguration imageConfiguration =
           createLocalImageConfiguration(context, size: Size(2, 3));
-      BitmapDescriptor.fromAssetImage(imageConfiguration, "images/car.png")
+      BitmapDescriptor.fromAssetImage(
+              imageConfiguration, "images/bike_icon.png")
           .then((value) {
         iconAnimatedMarker = value;
       });
@@ -606,7 +607,7 @@ class _NewTripScreenState extends State<NewTripScreen> {
                             endTripNow();
                           }
                         },
-                        icon: Icon(Icons.directions_car,
+                        icon: Icon(Icons.directions_bike_outlined,
                             color: Colors.white, size: 25),
                         label: Text(buttonTitle!,
                             style: TextStyle(

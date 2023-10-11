@@ -180,6 +180,8 @@ class AssistantMethods {
             (snap.snapshot.value as Map)["information"]["v_model"];
         onlineDriverData.car_type =
             (snap.snapshot.value as Map)["information"]["offers"];
+        onlineDriverData.profile_image =
+            (snap.snapshot.value as Map)["information"]["profile_url"];
         driverVehicleType =
             (snap.snapshot.value as Map)["information"]["offers"];
       }

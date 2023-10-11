@@ -7,6 +7,7 @@ import 'package:vester_driver/services/auth.dart';
 import 'package:vester_driver/splash.dart';
 
 import 'infoHandler/app_info.dart';
+import 'package:vester_driver/app/auth/register/drivers_profile_pics.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,6 +49,7 @@ class VesterDriver extends StatelessWidget {
           ),
           debugShowCheckedModeBanner: false,
           home: Splash(),
+          // home: AvatarChangerPage(),
         ));
   }
 }

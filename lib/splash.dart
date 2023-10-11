@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:vester_driver/app/auth/register/driver_info.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:vester_driver/app/auth/register/driver_info.dart';
+import 'package:vester_driver/app/auth/register/drivers_profile_pics.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _SplashState extends State<Splash> {
                 context, MaterialPageRoute(builder: (c) => MapScreen()));
           } else {
             Navigator.push(context,
-                MaterialPageRoute(builder: (c) => DriverInformation()));
+                MaterialPageRoute(builder: (c) => AvatarChangerPage()));
           }
         }).catchError((error) {
           print('Error: $error');

@@ -10,6 +10,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:vester_driver/app/sub_screens/map_screen.dart';
 import '../../../utils/helper.dart';
 import './driver_info.dart';
+import './drivers_profile_pics.dart';
 
 class EmailRegisterForm extends StatefulWidget {
   EmailRegisterForm({required this.auth});
@@ -53,7 +54,7 @@ class _EmailRegisterFormState extends State<EmailRegisterForm> {
 
         await Fluttertoast.showToast(msg: "Successfully Registered");
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => DriverInformation()));
+            context, MaterialPageRoute(builder: (c) => AvatarChangerPage()));
       } else {
         await Fluttertoast.showToast(msg: "Enter valid details");
         loading = false;
